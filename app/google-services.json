@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "142002309155",
+    "firebase_url": "https://foodies-1d1b0-default-rtdb.firebaseio.com",
+    "project_id": "foodies-1d1b0",
+    "storage_bucket": "foodies-1d1b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142002309155:android:7ccabc37bca8cad9b2c996",
+        "android_client_info": {
+          "package_name": "com.example.practicalogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142002309155-3dlov7go6c0ukk1vd09tonb8mn3nffun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkGG8KIBJcnmzLbgDlOXV_QAuj3fR7aWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142002309155-3dlov7go6c0ukk1vd09tonb8mn3nffun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
