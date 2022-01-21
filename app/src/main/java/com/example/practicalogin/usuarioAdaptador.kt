@@ -37,8 +37,9 @@ class UsuarioAdaptador(private val lista_usuario:List<Usuario>) : RecyclerView.A
 
         holder.editar.setOnClickListener {
 
-            val activity= Intent(contexto,VerPerfil::class.java)
+            val activity= Intent(contexto,EditarPerfil::class.java)
             activity.putExtra("usuario",item_actual as Serializable)
+
 
             contexto.startActivity(activity)
 

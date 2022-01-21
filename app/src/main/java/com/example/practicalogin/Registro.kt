@@ -65,7 +65,21 @@ class Registro : AppCompatActivity() {
                 Toast.makeText(applicationContext,
                     "Las contraseñas deben coincidir",
                     Toast.LENGTH_SHORT).show()
-            }else{
+            }else if(pass.text.toString().equals("")){
+                Toast.makeText(applicationContext,
+                    "Debe introducir una contraseña",
+                    Toast.LENGTH_SHORT).show()
+            } else if(nombre.text.toString().equals("")) {
+                Toast.makeText(applicationContext,
+                    "Eliga un nombre antes de registrarse",
+                    Toast.LENGTH_SHORT).show()
+
+            }else if(platoEstrella.text.toString().equals("")){
+
+                Toast.makeText(applicationContext,
+                    "Rellene el campo 'Plato estrella' ",
+                    Toast.LENGTH_SHORT).show()
+            } else{
 
                 val identificador=db_ref.child("foodies")
                     .child("usuarios").push().key

@@ -76,4 +76,13 @@ class BienvenidoUsuario : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val actividad = Intent(applicationContext,MainActivity::class.java)
+        startActivity (actividad)
+
+
+    }
 }
