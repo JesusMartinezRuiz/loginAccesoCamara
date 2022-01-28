@@ -32,6 +32,8 @@ class VerPerfil : AppCompatActivity() {
     lateinit var editar:Button
     lateinit var borrar:Button
     lateinit var ascender:Button
+    lateinit var chatPublico:Button
+    lateinit var chatPrivado:Button
     private var url_usuario: Uri?=null
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
@@ -51,6 +53,8 @@ class VerPerfil : AppCompatActivity() {
         editar=findViewById(R.id.ver_editar)
         borrar=findViewById(R.id.ver_borrar)
         ascender=findViewById(R.id.ascender_admin)
+        chatPrivado=findViewById(R.id.chatPrivado)
+        chatPublico=findViewById(R.id.chatPublico)
 
         db_ref= FirebaseDatabase.getInstance().getReference()
         sto_ref= FirebaseStorage.getInstance().getReference()
@@ -178,7 +182,13 @@ class VerPerfil : AppCompatActivity() {
                 }
             })
 
+        chatPublico.setOnClickListener {
 
+        }
+
+        chatPrivado.setOnClickListener{
+
+        }
 
 
     }

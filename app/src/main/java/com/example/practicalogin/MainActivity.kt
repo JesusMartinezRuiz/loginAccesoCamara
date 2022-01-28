@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                                         getString(R.string.type),
                                         pojo_usuario.tipo
                                     )
+
                                     commit()
                                 }
 

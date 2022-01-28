@@ -11,8 +11,8 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:text="Fecha Creación:"
         app:layout_constraintEnd_toStartOf="@+id/btn_ascender_editar"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,15 +23,15 @@
         android:id="@+id/fecha_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Fecha"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
         android:id="@+id/btn_ascender_editar"
-        android:layout_width="114dp"
-        android:layout_height="61dp"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
         android:text="Ascender Admin"
         app:layout_constraintEnd_toStartOf="@+id/btn_borrar_editar"
         app:layout_constraintHorizontal_bias="0.5"
@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/btn_borrar_editar"
         android:layout_width="95dp"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:text="Borrar Cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -50,8 +50,8 @@
 
     <ImageView
         android:id="@+id/iv_foto_editar"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,8 +87,8 @@
 
     <Button
         android:id="@+id/btn_editar_editar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="51dp"
         android:text="Editar"
         app:layout_constraintBottom_toTopOf="@+id/btn_chatPublico_editar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +98,7 @@
     <Button
         android:id="@+id/btn_chatPublico_editar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Chat publico"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_chatPrivado_editar"
@@ -108,7 +108,7 @@
     <Button
         android:id="@+id/btn_chatPrivado_editar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Chat Privado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
