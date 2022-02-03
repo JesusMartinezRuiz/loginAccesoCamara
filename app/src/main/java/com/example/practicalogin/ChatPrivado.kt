@@ -72,7 +72,7 @@ class ChatPrivado : AppCompatActivity() {
                 val fecha_hora = formateador.format(hoy.getTime());
 
                 val id_mensaje=db_ref.child("foodies").child("mensajes").push().key!!
-                val nuevo_mensaje=Mensaje(id_mensaje,nombre_usuario,"",mensaje,fecha_hora,id_user,"",true)
+                val nuevo_mensaje=Mensaje(id_mensaje,nombre_usuario,"",mensaje,fecha_hora,id_user+"@"+user.id,"",true)
                 db_ref.child("foodies").child("mensajes").child(id_mensaje).setValue(nuevo_mensaje)
                 mensaje_enviado.setText("")
 
@@ -95,7 +95,7 @@ class ChatPrivado : AppCompatActivity() {
 
 
 
-                    db_ref.child("foodies").child("usuarios").child(pojo_mensaje.id_usuario!!)
+                    db_ref.child("foodies").child("usuarios").child(id_user)
                         .addListenerForSingleValueEvent(
                             object: ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -117,11 +117,12 @@ class ChatPrivado : AppCompatActivity() {
                         )
 
                     semaforo.await()
-                    if (pojo_mensaje.privado==true /* ?????? QUE CONDICION && pojo_mensaje.usuario_emisor==nombre_usuario*/){
+                    if (pojo_mensaje.privado==true && pojo_mensaje!!.id_usuario!!.contains(id_user) && pojo_mensaje!!.id_usuario!!.contains(user.id.toString()) ){
 
                         lista.add(pojo_mensaje)
                     }
                     runOnUiThread {
+
                         recycler.adapter!!.notifyDataSetChanged()
                         recycler.scrollToPosition(lista.size - 1)
                     }

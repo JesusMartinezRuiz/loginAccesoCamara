@@ -78,6 +78,7 @@ class VerPerfil : AppCompatActivity() {
             ascender.isGone=true
         }
 
+
         db_ref.child("foodies")
             .child("usuarios").child(spid!!)
             .addListenerForSingleValueEvent(object : ValueEventListener {
