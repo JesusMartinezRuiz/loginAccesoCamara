@@ -117,7 +117,8 @@ class ChatPrivado : AppCompatActivity() {
                         )
 
                     semaforo.await()
-                    if (pojo_mensaje.privado==true && pojo_mensaje.usuario_emisor==nombre_usuario){
+                    if (pojo_mensaje.privado==true /* ?????? QUE CONDICION && pojo_mensaje.usuario_emisor==nombre_usuario*/){
+
                         lista.add(pojo_mensaje)
                     }
                     runOnUiThread {
