@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isGone
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
@@ -35,6 +36,8 @@ class EditarPerfil : AppCompatActivity() {
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
     lateinit var user : Usuario
+    lateinit var chatPublico:Button
+    lateinit var chatPrivado: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +53,27 @@ class EditarPerfil : AppCompatActivity() {
         editar=findViewById(R.id.btn_editar_editar)
         borrar=findViewById(R.id.btn_borrar_editar)
         ascender=findViewById(R.id.btn_ascender_editar)
+        chatPublico=findViewById(R.id.btn_chatPublico_editar)
+        chatPrivado=findViewById(R.id.btn_chatPrivado_editar)
+        chatPrivado.isGone=true
+        chatPublico.isGone=true
+
+        val app_id = getString(R.string.app_name)
+        val sp_name = "${app_id}_SP_Login"
+        val SP = getSharedPreferences(sp_name,0)
+
+        val spTipo= SP.getString(
+            getString(R.string.type),
+            "falloShareTipo"
+        )
+
+
+        if (spTipo=="1"){
+            ascender.isGone=true
+            borrar.isGone=true
+            editar.isGone=true
+        }
+
 
 
         db_ref= FirebaseDatabase.getInstance().getReference()

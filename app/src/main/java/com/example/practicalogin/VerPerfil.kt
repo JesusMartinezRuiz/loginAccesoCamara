@@ -73,9 +73,17 @@ class VerPerfil : AppCompatActivity() {
             getString(R.string.type),
             "falloShareTipo"
         )
+        val spPrivado= SP.getString(
+            getString(R.string.privado),
+            "false"
+        )
 
         if (spTipo=="1"){
             ascender.isGone=true
+        }
+
+        if (spPrivado=="false"){
+            chatPrivado.isGone=true
         }
 
 

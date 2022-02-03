@@ -3,6 +3,7 @@
     <string name="id">idUser</string>
     <string name="username">name_user</string>
     <string name="type">tipo_user</string>
+    <string name="privado">false</string>
     <string name="nombre_canal">Notificacion basica</string>
     <string name="id_canal">canal_basico</string>
     <string name="description_canal">Canal de prueba</string>
