@@ -8,4 +8,5 @@ data class Mensaje(var id:String?=null,
                    var contenido:String?=null,
                    var fecha_hora:String?=null,
                    var id_usuario:String?=null,
-                   var img_usuario:String?=null ):Serializable
+                   var img_usuario:String?=null,
+                   var privado:Boolean?=null):Serializable

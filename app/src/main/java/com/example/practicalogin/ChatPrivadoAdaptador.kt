@@ -10,13 +10,15 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MensajeAdaptador(private val lista_mensajes:List<Mensaje>) : RecyclerView.Adapter<MensajeAdaptador.MensajeViewHolder>() {
+class ChatPrivadoAdaptador (private val lista_mensajes:List<Mensaje>) : RecyclerView.Adapter<ChatPrivadoAdaptador.MensajeViewHolder>()  {
     private lateinit var contexto: Context
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MensajeViewHolder {
+
         val vista_item =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_chat_publico, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.row_chat_privado, parent, false)
         //Para poder hacer referencia al contexto de la aplicacion
         contexto = parent.context
 
@@ -24,6 +26,8 @@ class MensajeAdaptador(private val lista_mensajes:List<Mensaje>) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: MensajeViewHolder, position: Int) {
+
+
         val item_actual = lista_mensajes[position]
 
         if(item_actual.usuario_emisor==item_actual.usuario_receptor){
@@ -62,13 +66,15 @@ class MensajeAdaptador(private val lista_mensajes:List<Mensaje>) : RecyclerView.
 
     class MensajeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val yo: TextView = itemView.findViewById(R.id.yo)
-        val emisor: TextView = itemView.findViewById(R.id.emisor)
-        val nombre_emisor: TextView = itemView.findViewById(R.id.nombre_emisor)
-        val nombre_receptor: TextView = itemView.findViewById(R.id.nombre_receptor)
-        val hora_receptor: TextView = itemView.findViewById(R.id.hora_receptor)
-        val hora_emisor: TextView = itemView.findViewById(R.id.hora_emisor)
-        val imagen_receptor : ImageView = itemView.findViewById(R.id.imagen_receptor)
-        val imagen_emisor : ImageView = itemView.findViewById(R.id.imagen_emisor)
+        val yo: TextView = itemView.findViewById(R.id.yo_privado)
+        val emisor: TextView = itemView.findViewById(R.id.emisor_privado)
+        val nombre_emisor: TextView = itemView.findViewById(R.id.nombre_emisor_privado)
+        val nombre_receptor: TextView = itemView.findViewById(R.id.nombre_receptor_privado)
+        val hora_receptor: TextView = itemView.findViewById(R.id.hora_receptor_privado)
+        val hora_emisor: TextView = itemView.findViewById(R.id.hora_emisor_privado)
+        val imagen_receptor : ImageView = itemView.findViewById(R.id.imagen_receptor_privado)
+        val imagen_emisor : ImageView = itemView.findViewById(R.id.imagen_emisor_privado)
+
     }
 }
+

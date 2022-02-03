@@ -188,7 +188,8 @@ class VerPerfil : AppCompatActivity() {
         }
 
         chatPrivado.setOnClickListener{
-
+            val actividad = Intent(applicationContext, ChatPrivadoSeleccion::class.java)
+            startActivity (actividad)
         }
 
 

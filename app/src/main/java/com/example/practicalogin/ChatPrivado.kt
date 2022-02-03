@@ -1,13 +1,15 @@
 package com.example.practicalogin
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -16,9 +18,7 @@ import java.util.*
 import java.util.concurrent.CountDownLatch
 import kotlin.collections.ArrayList
 
-
-
-class ChatPublico: AppCompatActivity() {
+class ChatPrivado : AppCompatActivity() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var lista:ArrayList<Mensaje>
@@ -29,12 +29,15 @@ class ChatPublico: AppCompatActivity() {
     private lateinit var img_usuario : String
     private lateinit var id_user: String
     private lateinit var id_usuario:String
+    lateinit var user:Usuario
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_publico)
+        setContentView(R.layout.activity_chat_privado)
+
+        user= intent.getSerializableExtra("usuarioPrivado")as Usuario
 
 
         val app_id = getString(R.string.app_name)
@@ -55,8 +58,8 @@ class ChatPublico: AppCompatActivity() {
 
         db_ref= FirebaseDatabase.getInstance().getReference()
         lista=ArrayList<Mensaje>()
-        mensaje_enviado=findViewById(R.id.et_enviar_chat)
-        boton_enviar=findViewById(R.id.bt_enviar_mensaje)
+        mensaje_enviado=findViewById(R.id.et_enviar_chat_privado)
+        boton_enviar=findViewById(R.id.bt_enviar_mensaje_privado)
 
 
         boton_enviar.setOnClickListener{
@@ -69,7 +72,7 @@ class ChatPublico: AppCompatActivity() {
                 val fecha_hora = formateador.format(hoy.getTime());
 
                 val id_mensaje=db_ref.child("foodies").child("mensajes").push().key!!
-                val nuevo_mensaje=Mensaje(id_mensaje,nombre_usuario,"",mensaje,fecha_hora,id_user,"",false)
+                val nuevo_mensaje=Mensaje(id_mensaje,nombre_usuario,"",mensaje,fecha_hora,id_user,"",true)
                 db_ref.child("foodies").child("mensajes").child(id_mensaje).setValue(nuevo_mensaje)
                 mensaje_enviado.setText("")
 
@@ -102,6 +105,7 @@ class ChatPublico: AppCompatActivity() {
                                     pojo_mensaje.img_usuario=user_img?.url_usuario
 
 
+
                                     semaforo.countDown()
                                 }
 
@@ -113,10 +117,9 @@ class ChatPublico: AppCompatActivity() {
                         )
 
                     semaforo.await()
-                    if (pojo_mensaje.privado==false ){
+                    if (pojo_mensaje.privado==true && pojo_mensaje.usuario_emisor==nombre_usuario){
                         lista.add(pojo_mensaje)
                     }
-
                     runOnUiThread {
                         recycler.adapter!!.notifyDataSetChanged()
                         recycler.scrollToPosition(lista.size - 1)
@@ -146,7 +149,7 @@ class ChatPublico: AppCompatActivity() {
 
 
 
-        recycler=findViewById(R.id.rv_mensajes)
+        recycler=findViewById(R.id.rv_chat_privado)
         recycler.adapter=MensajeAdaptador(lista)
         recycler.layoutManager= LinearLayoutManager(applicationContext)
         recycler.setHasFixedSize(true)
