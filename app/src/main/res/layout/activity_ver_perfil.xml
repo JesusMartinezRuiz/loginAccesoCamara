@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".VerPerfil">
 
+    <Button
+        android:id="@+id/btn_desactivarPrivado"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:text="Desactivar Chat Privado"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ver_foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ver_foto"
+        app:layout_constraintTop_toBottomOf="@+id/ver_borrar" />
+
     <ImageView
         android:id="@+id/ver_foto"
         android:layout_width="150dp"
@@ -168,4 +179,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_activarPrivado"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:text="Activar Chat Privado"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ver_foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ver_foto"
+        app:layout_constraintTop_toBottomOf="@+id/ver_borrar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,8 @@ class VerPerfil : AppCompatActivity() {
     private var url_usuario: Uri?=null
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
+    lateinit var activarPrivado:Button
+    lateinit var desactivarPrivado:Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +57,8 @@ class VerPerfil : AppCompatActivity() {
         ascender=findViewById(R.id.ascender_admin)
         chatPrivado=findViewById(R.id.chatPrivado)
         chatPublico=findViewById(R.id.chatPublico)
+        activarPrivado=findViewById(R.id.btn_activarPrivado)
+        desactivarPrivado=findViewById(R.id.btn_desactivarPrivado)
 
         db_ref= FirebaseDatabase.getInstance().getReference()
         sto_ref= FirebaseStorage.getInstance().getReference()
@@ -62,6 +66,7 @@ class VerPerfil : AppCompatActivity() {
         val app_id = getString(R.string.app_name)
         val sp_name = "${app_id}_SP_Login"
         val SP = getSharedPreferences(sp_name,0)
+        activarPrivado.isGone=true
 
 
         val spid= SP.getString(
@@ -78,13 +83,17 @@ class VerPerfil : AppCompatActivity() {
             "false"
         )
 
-        if (spTipo=="1"){
+        if (spTipo=="2"){
             ascender.isGone=true
         }
 
         if (spPrivado=="false"){
             chatPrivado.isGone=true
+            desactivarPrivado.isGone=true
+            activarPrivado.isGone=false
         }
+
+
 
 
         db_ref.child("foodies")
@@ -181,6 +190,24 @@ class VerPerfil : AppCompatActivity() {
                             }
 
                         }
+
+                    activarPrivado.setOnClickListener {
+                        chatPrivado.isGone=false
+                        activarPrivado.isGone=true
+                        desactivarPrivado.isGone=false
+
+                        db_ref.child("foodies").child("usuarios").child(pojo_usuario?.id!!).child("privado").setValue(true)
+
+                    }
+
+                    desactivarPrivado.setOnClickListener {
+                        chatPrivado.isGone=true
+                        activarPrivado.isGone=false
+                        desactivarPrivado.isGone=true
+                        db_ref.child("foodies").child("usuarios").child(pojo_usuario?.id!!).child("privado").setValue(false)
+
+
+                    }
 
 
 

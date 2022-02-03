@@ -39,6 +39,7 @@ class EditarPerfil : AppCompatActivity() {
     lateinit var chatPublico:Button
     lateinit var chatPrivado: Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_perfil)
